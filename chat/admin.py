@@ -8,14 +8,9 @@ class MassageAdmin(admin.ModelAdmin):
     fields = ('text', 'date')
     readonly_fields =('date',)
 
-    def create_time_display(self, obj):
-        return obj.date.strftime("%B %d, %Y")
-    
-    create_time_display.short_description = '<желаемое имя>'
-
 
 class RoomAdmin(admin.ModelAdmin):
-    list_display = ('room_name',)
+    list_display = ('room_name', 'username')
     fields = ('room_name',)
 
 

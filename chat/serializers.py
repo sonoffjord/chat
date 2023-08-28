@@ -4,13 +4,14 @@ from .models import Massage, Room
 
 
 class MassageSerializer(serializers.ModelSerializer):
-    username = serializers.ReadOnlyField(source='username.username')
     class Meta:
         model = Massage
-        fields = ('text', 'date', 'username')
+        fields = ('text', 'date')
 
 
 class RoomSerializer(serializers.ModelSerializer):
+    username = serializers.ReadOnlyField(source='username.username')
+
     class Meta:
         model = Room
-        fields = ('room_name',)
+        fields = ('room_name', 'username')
