@@ -1,17 +1,27 @@
 from rest_framework import serializers
+from django.contrib.auth.models import User
 
 from .models import Massage, Room
 
 
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'username')
+
+
 class MassageSerializer(serializers.ModelSerializer):
+    user = UserSerializer()
+
     class Meta:
         model = Massage
-        fields = ('text', 'date')
+        fields = ('text', 'date', 'user')
 
 
 class RoomSerializer(serializers.ModelSerializer):
-    username = serializers.ReadOnlyField(source='username.username')
+    members = UserSerializer(many=True)
+    messages = MassageSerializer(many=True)
 
     class Meta:
         model = Room
-        fields = ('room_name', 'username')
+        fields = ('room_name', 'members', 'messages')

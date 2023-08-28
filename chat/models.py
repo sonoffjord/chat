@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 class Room(models.Model):
     room_name = models.CharField(max_length=50)
-    username = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    members = models.ManyToManyField(User, null=True, related_name='members')
 
     class Meta:
         verbose_name = 'комнату'
@@ -18,7 +18,8 @@ class Room(models.Model):
 class Massage(models.Model):
     text = models.TextField()
     date = models.DateTimeField(auto_now=True)
-    room = models.ForeignKey(Room, on_delete=models.CASCADE, null=True)
+    room = models.ForeignKey(Room, on_delete=models.CASCADE, null=True, related_name='messages')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='user')
 
     class Meta:
         verbose_name = 'сообщение'
