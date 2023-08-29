@@ -18,6 +18,12 @@ class MassageSerializer(serializers.ModelSerializer):
         fields = ('text', 'date', 'user')
 
 
+class RoomsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Room
+        fields = ('room_name',)
+
+
 class RoomSerializer(serializers.ModelSerializer):
     members = UserSerializer(many=True)
     messages = MassageSerializer(many=True)
