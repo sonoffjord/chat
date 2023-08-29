@@ -13,7 +13,6 @@ class MassageView(ListCreateAPIView):
 
 class RoomView(ModelViewSet):
     queryset = Room.objects.all()
-    serializer_class = RoomSerializer
 
     def get_serializer_class(self):
         if self.action == 'list' or self.action == 'create':
