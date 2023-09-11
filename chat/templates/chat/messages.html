@@ -1,0 +1,17 @@
+{% extends 'chat/base.html' %}
+
+{% block title %}Сообщения{% endblock title %}
+
+{% block content %}
+<div class="row">
+    <div class="container col-md-3">
+    {% for message in messages %}
+        {{ message.user }}
+        <li>{{ message.text }}</li>
+        {{ message.date }}
+        <hr>
+        <br>
+    {% endfor %}
+    </div>
+</div>
+{% endblock content %}

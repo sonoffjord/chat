@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
+from django.views import generic
 from rest_framework.generics import ListCreateAPIView
 from rest_framework.viewsets import ModelViewSet
 
@@ -26,15 +27,21 @@ def signup(request):
     return render(request, 'chat/form.html', {'form': form})
 
 
-class MassageView(ListCreateAPIView):
-    queryset = Massage.objects.all()
-    serializer_class = MassageSerializer
 
 
-class RoomView(ModelViewSet):
-    queryset = Room.objects.all()
+class MassageView(generic.ListView):
+    model = Massage
+    template_name = 'chat/messages.html'
+    context_object_name = 'messages'
 
-    def get_serializer_class(self):
-        if self.action == 'list' or self.action == 'create':
-            return RoomsSerializer
-        return RoomSerializer
+    def get_queryset(self):
+        return Massage.objects.all()
+
+
+class RoomView(generic.ListView):
+    model = Room
+    template_name = 'chat/rooms.html'
+    context_object_name = 'rooms'
+
+    def get_queryset(self):
+        return Room.objects.all()
