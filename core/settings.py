@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'channels',
     'chat.apps.ChatConfig',
+    'room.apps.RoomConfig',
 ]
 
 MIDDLEWARE = [
