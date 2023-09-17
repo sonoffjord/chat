@@ -1,9 +1,0 @@
-{% extends 'chat/base.html' %}
-
-{% block title %}Комнаты{% endblock title %}
-
-{% block content %}
-    {% for room in rooms %}
-    <li><a href="/">{{ room }}</a></li>
-    {% endfor %}
-{% endblock content %}
