@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'channels',
     'rest_framework.authtoken',
+    'rest_framework',
     'chat.apps.ChatConfig',
     'room.apps.RoomConfig',
 ]

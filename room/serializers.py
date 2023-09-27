@@ -12,14 +12,6 @@ class MessageSerializer(serializers.ModelSerializer):
         fields = ('user', 'username', 'content', 'date_added', 'room')
 
 
-# class SendMessageSerializer(serializers.ModelSerializer):
-#     user = serializers.HiddenField(default=serializers.CurrentUserDefault())
-
-#     class Meta:
-#         model = Message
-#         fields = ('content', 'user')
-
-
 class RoomsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Room
